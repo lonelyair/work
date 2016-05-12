@@ -1,0 +1,20 @@
+{
+  "name": "express4-demo",
+  "description": "express4 nodejs demo",
+  "main": "",
+  "authors": [
+    "akang"
+  ],
+  "license": "MIT",
+  "homepage": "lonelyair.github.io/hexo-blog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
