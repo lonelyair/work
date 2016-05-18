@@ -4,14 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var ejs = require('ejs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
+var home = require('./routes/home');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+//app.engine('.html', ejs.__express);
+//app.set('view engine', 'html');
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -24,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/home', home);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +66,16 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+'use strict';
+
+var app1 = angular.module('app', ['ngRoute']);
+
+app1.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    $routeProvider
+        .when('/', {templateUrl: '/views/tpl/welcome.html', controller: 'WelcomeCtrl'})
+        .otherwise({redirectTo: '/'});
+    $locationProvider.html5Mode(true);
+}]);
 
 module.exports = app;
